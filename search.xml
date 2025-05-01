@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> JAVA </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -24,6 +30,12 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> 像素画 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -36,6 +48,12 @@
       
         <content type="html"><![CDATA[]]></content>
       
+      
+      <categories>
+          
+          <category> HEXO </category>
+          
+      </categories>
       
       
     </entry>
@@ -52,10 +70,16 @@
       
       <categories>
           
-          <category> 碎碎念 碎碎念 </category>
+          <category> 碎碎念 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 碎碎念 </tag>
+            
+        </tags>
       
     </entry>
     
