@@ -4,12 +4,56 @@
   
     
     <entry>
-      <title>数据结构</title>
-      <link href="/2025/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-      <url>/2025/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+      <title>链表</title>
+      <link href="/2025/05/06/%E9%93%BE%E8%A1%A8/"/>
+      <url>/2025/05/06/%E9%93%BE%E8%A1%A8/</url>
       
-        <content type="html"><![CDATA[<p>s</p>]]></content>
+        <content type="html"><![CDATA[<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>typedef int ElemType;<br>typedef struct node {<br>ElemType data;<br>struct node* next;<br>}Node;</p><p>Node* initList() {<br>Node* head &#x3D; (Node*)malloc(sizeof(Node));<br>head-&gt;data &#x3D; 0;<br>head-&gt;next &#x3D; NULL;<br>return head;<br>}</p><p>&#x2F;&#x2F;头插法<br>int insertHead(Node* L, ElemType e)&#x2F;&#x2F;L为头结点<br>{<br>Node* p &#x3D; (Node*)malloc(sizeof(Node));<br>p-&gt;data &#x3D; e;<br>p-&gt;next &#x3D; L-&gt;next;<br>L-&gt;next &#x3D; p;<br>return 1;<br>}</p><p>&#x2F;&#x2F;遍历<br>int listNode(Node* L) {<br>Node* p &#x3D; L-&gt;next;<br>while (p !&#x3D; NULL) {<br>printf(“%d  “, p-&gt;data);<br>p &#x3D; p-&gt;next;<br>}<br>printf(“\n”);<br>return 1;<br>}</p><p>&#x2F;&#x2F;获取尾部节点<br>Node* getTail(Node* L) {<br>Node* p &#x3D; L;<br>while (p-&gt;next !&#x3D; NULL) {<br>p &#x3D; p-&gt;next;<br>}<br>return p;<br>}</p><p>&#x2F;&#x2F;尾插法<br>Node* insertTail(Node* tail, ElemType e) {<br>Node* p &#x3D; (Node*)malloc(sizeof(Node));<br>p-&gt;data &#x3D; e;<br>tail-&gt;next &#x3D; p;<br>p-&gt;next &#x3D; NULL;<br>return p;<br>}</p><p>&#x2F;&#x2F;在指定位置插入<br>int insertNode(Node* L, int pos, ElemType e) {<br>Node* p &#x3D; L;<br>int i &#x3D; 0;<br>while (i &lt; pos - 1) {<br>p &#x3D; p-&gt;next;<br>i++;<br>if (p &#x3D;&#x3D; NULL) {<br>return 0;<br>}<br>}&#x2F;&#x2F;此时p为指定位置的前一个位置<br>Node* q &#x3D; (Node*)malloc(sizeof(Node));<br>q-&gt;data &#x3D; e;<br>q-&gt;next &#x3D; p-&gt;next;<br>p-&gt;next &#x3D; q;<br>return 1;<br>}</p><p>&#x2F;&#x2F;删除节点<br>int deleteNode(Node* L, int pos) {<br>Node* p &#x3D; L;<br>int i &#x3D; 0;<br>while (i &lt; pos - 1) {<br>p &#x3D; p-&gt;next;<br>i++;<br>if (p &#x3D;&#x3D; NULL) {<br>return 0;<br>}<br>}<br>Node* q &#x3D; p-&gt;next;<br>p-&gt;next &#x3D; q-&gt;next;<br>free(q);<br>return 1;<br>}</p><p>int main() {<br>Node* list &#x3D; initList();<br>Node* tail &#x3D; getTail(list);&#x2F;&#x2F;先找到尾结点<br>&#x2F;<em>insertHead(list, 10);<br>insertHead(list, 20);<br>insertHead(list, 30);</em>&#x2F;<br>tail &#x3D; insertTail(tail, 10);&#x2F;&#x2F;通过更新尾结点来持续进行尾插法<br>tail &#x3D; insertTail(tail, 20);<br>tail &#x3D; insertTail(tail, 30);<br>listNode(list);<br>insertNode(list, 2, 100);<br>listNode(list);<br>deleteNode(list, 3);<br>listNode(list);<br>return 0;<br>}</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>顺序表</title>
+      <link href="/2025/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%A1%BA%E5%BA%8F%E8%A1%A8/"/>
+      <url>/2025/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%A1%BA%E5%BA%8F%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define max 100<br>typedef int ElemType;</p><p>typedef struct {<br>    ElemType <em>data;<br>    int length;<br>}SeqList<br>;<br>&#x2F;&#x2F;初始化<br>SeqList</em> initList()<br>{<br>    SeqList* L &#x3D; (SeqList*)malloc(sizeof(SeqList));<br>    L-&gt;data &#x3D; (ElemType*)malloc(sizeof(ElemType) * max);<br>    L-&gt;length &#x3D; 0;<br>    return L;<br>}</p><p>&#x2F;&#x2F;在尾部添加数据<br>int appendElem(SeqList* L, ElemType e) {<br>    if (L-&gt;length &gt;&#x3D; max) {<br>        printf(“顺序表已满”);<br>        return 0;<br>    }<br>    L-&gt;data[L-&gt;length] &#x3D; e;<br>    L-&gt;length++;<br>    return 1;<br>}</p><p>&#x2F;&#x2F;遍历<br>void listElem(SeqList* L) {<br>    for (int i &#x3D; 0; i &lt; L-&gt;length; i++)<br>    {<br>        printf(“%d\t”, L-&gt;data[i]);<br>    }<br>    printf(“\n”);</p><p>}</p><p>&#x2F;&#x2F;插入数据<br>int insertElem(SeqList* L, int pos, ElemType e) {<br>    if (pos &lt;&#x3D; L-&gt;length - 1) {<br>        for (int i &#x3D; L-&gt;length - 1; i &gt;&#x3D; pos - 1; i–) {&#x2F;&#x2F;pos-1 就是要插入的位置<br>            L-&gt;data[i + 1] &#x3D; L-&gt;data[i];&#x2F;&#x2F;pos-1之后的数都往后挪一个位置，把pos-1的位置空出来<br>        }<br>        L-&gt;data[pos - 1] &#x3D; e;<br>        L-&gt;length++;<br>    }<br>    return 1;<br>}</p><p>&#x2F;&#x2F;删除数据<br>int deleteElem(SeqList* L, int pos, ElemType* e) {<br>    *e &#x3D; L-&gt;data[pos - 1];<br>    if (pos &lt; L-&gt;length) {<br>        for (int i &#x3D; pos; i &lt; L-&gt;length; i++)<br>        {<br>            L-&gt;data[i - 1] &#x3D; L-&gt;data[i];&#x2F;&#x2F;把要删除的位置后的数往前挪<br>        }<br>    }<br>    L-&gt;length–;<br>    return 1;<br>}</p><p>int main() {</p><pre><code>SeqList *list = initList();appendElem(list, 1);appendElem(list, 2);appendElem(list, 3);appendElem(list, 4);insertElem(list, 2, 6);listElem(list);ElemType delData;deleteElem(list, 2, &amp;delData);listElem(list);return 0;</code></pre><p>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>时间复杂度</title>
+      <link href="/2025/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
+      <url>/2025/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.png"><br><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.png"><br>2的(t-1)次方 &gt; n  是因为只有这时候循环结束(即这是判定条件)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
       
       
     </entry>
