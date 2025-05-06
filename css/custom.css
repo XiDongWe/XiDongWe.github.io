@@ -377,3 +377,22 @@ div#archive {
   color: #f2f2f2;
 }
 
+/* 调整分类磁铁的背景颜色和边框 */
+.magnet-item {
+  background-color: rgba(16, 16, 16, 0.7) !important; /* 半透明深色背景 */
+  border-radius: 10px !important; /* 圆角 */
+  border: none !important; /* 无边框 */
+  color: #ffffff !important; /* 文字颜色为白色 */
+  backdrop-filter: blur(10px) !important; /* 添加磨砂玻璃效果 */
+}
+
+.magnet-item:hover {
+  background-color: rgba(63, 63, 63, 0.8) !important; /* 悬浮时的背景颜色 */
+  transform: translateY(-2px); /* 悬浮时稍微上移 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 悬浮时的阴影效果 */
+}
+
+/* 调整分类磁铁内部的白色背景 */
+.magnet-item .magnet-item-content {
+  background-color: transparent !important; /* 内部背景透明 */
+}
