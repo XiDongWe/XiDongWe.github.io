@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>双向链表</title>
+      <link href="/2025/05/06/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/"/>
+      <url>/2025/05/06/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>typedef int ElemType;</p><p>typedef struct node{<br>ElemType data;<br>struct node *prev, *next;</p><p>}Node;</p><p>&#x2F;&#x2F;初始化双向链表<br>Node* initNode() {<br>Node* head &#x3D; (Node*)malloc(sizeof(Node));<br>head-&gt;data &#x3D; 0;<br>head-&gt;prev &#x3D; NULL;<br>head-&gt;next &#x3D; NULL;<br>return head;<br>}</p><p>&#x2F;&#x2F;头插法<br>int insertHead(Node* L, ElemType e) {<br>Node* p &#x3D; (Node*)malloc(sizeof(Node));<br>p-&gt;data &#x3D; e;<br>p-&gt;prev &#x3D; L;<br>p-&gt;next &#x3D; L-&gt;next;<br>if (L-&gt;next !&#x3D; NULL) {<br>L-&gt;next-&gt;prev &#x3D; p;<br>}<br>L-&gt;next &#x3D; p;<br>return 1;<br>}</p><p>&#x2F;&#x2F;遍历<br>int listNode(Node* L) {<br>Node* p &#x3D; L-&gt;next;<br>while (p !&#x3D; NULL) {<br>printf(“%d  “, p-&gt;data);<br>p &#x3D; p-&gt;next;<br>}<br>printf(“\n”);<br>return 1;<br>}</p><p>&#x2F;&#x2F;获取尾部节点<br>Node* getTail(Node* L) {<br>Node* p &#x3D; L;<br>while (p-&gt;next !&#x3D; NULL) {<br>p &#x3D; p-&gt;next;<br>}<br>return p;<br>}</p><p>&#x2F;&#x2F;尾插法<br>Node* insertTail(Node* tail, ElemType e) {<br>Node* p &#x3D; (Node*)malloc(sizeof(Node));<br>p-&gt;data &#x3D; e;<br>p-&gt;prev &#x3D; tail;<br>tail-&gt;next &#x3D; p;<br>p-&gt;next &#x3D; NULL;<br>return p;<br>}</p><p>&#x2F;&#x2F;指定位置插入<br>void insertNode(Node* L, int pos, ElemType e) {<br>Node* p &#x3D; L;<br>int i &#x3D; 0;<br>while (i &lt; pos - 1) {<br>p &#x3D; p-&gt;next;<br>i++;<br>}<br>Node* q &#x3D; (Node*)malloc(sizeof(Node));<br>q-&gt;data &#x3D; e;<br>q-&gt;prev &#x3D; p;<br>q-&gt;next &#x3D; p-&gt;next;<br>p-&gt;next &#x3D; q;<br>p-&gt;next-&gt;prev &#x3D; q;<br>}</p><p>&#x2F;&#x2F;删除节点<br>int deleteNode(Node* L, int pos) {<br>Node* p &#x3D; L;<br>int i &#x3D; 0;<br>while (i &lt; pos - 1) {<br>p &#x3D; p-&gt;next;<br>i++;<br>if (p &#x3D;&#x3D; NULL){<br>return 0;<br>}<br>}<br>Node* q &#x3D; p-&gt;next;<br>p-&gt;next &#x3D; q-&gt;next;<br>q-&gt;next-&gt;prev &#x3D; p;<br>free(q);<br>return 1;<br>}</p><p>int main() {<br>Node* list &#x3D; initNode();<br>&#x2F;<em>insertHead(list, 1);<br>insertHead(list, 2);<br>insertHead(list, 3);</em>&#x2F;<br>Node* tail &#x3D; getTail(list);<br>tail &#x3D; insertTail(tail, 1);<br>tail &#x3D; insertTail(tail, 2);<br>tail &#x3D; insertTail(tail, 3);<br>listNode(list);<br>insertNode(list, 2, 6);<br>listNode(list);<br>deleteNode(list, 3);<br>listNode(list);<br>return 0;<br>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>链表</title>
       <link href="/2025/05/06/%E9%93%BE%E8%A1%A8/"/>
       <url>/2025/05/06/%E9%93%BE%E8%A1%A8/</url>
