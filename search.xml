@@ -4,6 +4,82 @@
   
     
     <entry>
+      <title>循环列表</title>
+      <link href="/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97/"/>
+      <url>/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define max 100<br>typedef int ElemType;</p><p>typedef struct QueueNode{<br>ElemType data;<br>struct QueueNode *next;<br>}QueueNode;</p><p>typedef struct{<br>QueueNode* front;<br>QueueNode* rear;<br>}Queue;</p><p>&#x2F;&#x2F;初始化<br>Queue* initQueueNode() {<br>QueueNode* node &#x3D; (QueueNode*)malloc(sizeof(QueueNode));&#x2F;&#x2F;node是头结点<br>Queue* q &#x3D; (Queue*)malloc(sizeof(Queue));<br>node-&gt;data &#x3D; 0;<br>node-&gt;next &#x3D; NULL;<br>q-&gt;front &#x3D; node;<br>q-&gt;rear &#x3D; node;<br>return q;<br>}</p><p>&#x2F;&#x2F;判断是否为空<br>int isEmpty(Queue* q) {<br>if (q-&gt;front &#x3D;&#x3D; q-&gt;rear) {<br>return 1;<br>}<br>else {<br>return 0;<br>}<br>}</p><p>&#x2F;&#x2F;入队<br>void inQueue(Queue *q, ElemType e) {<br>QueueNode <em>node &#x3D; (QueueNode</em>)malloc(sizeof(QueueNode));<br>node-&gt;data &#x3D; e;<br>node-&gt;next &#x3D; NULL;<br>q-&gt;rear-&gt;next &#x3D; node;&#x2F;&#x2F;把node赋给尾巴的下一个<br>q-&gt;rear &#x3D; node;&#x2F;&#x2F;      之后再让尾巴变成node<br>}</p><p>&#x2F;&#x2F;出队<br>int outQueue(Queue *q, ElemType *e) {<br>if (isEmpty(q)) {<br>printf(“空的”);<br>return 0;<br>}<br>QueueNode *node &#x3D; q-&gt;front-&gt;next;&#x2F;&#x2F;q-&gt;front指向头结点，node就是头结点的下一个节点<br>*e &#x3D; node-&gt;data;<br>q-&gt;front-&gt;next &#x3D; node-&gt;next;<br>if (q-&gt;rear &#x3D;&#x3D; node) {<br>q-&gt;rear &#x3D; q-&gt;front;<br>}<br>free(node);<br>return 1;<br>}</p><p>int main() {<br>Queue* q &#x3D; initQueueNode();<br>inQueue(q, 10);<br>inQueue(q, 20);<br>inQueue(q, 30);<br>ElemType e;<br>outQueue(q, &amp;e);<br>printf(“%d”, e);<br>return 0;<br>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>链队列</title>
+      <link href="/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E9%98%9F%E5%88%97/"/>
+      <url>/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E9%98%9F%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>队列</title>
+      <link href="/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/"/>
+      <url>/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97.png"><br>队列是先进先出,像排队一样</p><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define max 100<br>typedef int ElemType;</p><p>typedef struct {<br>ElemType* data;<br>int front;<br>int rear;<br>}Queue;</p><p>&#x2F;&#x2F;初始化<br>Queue* initQueue() {<br>Queue* q &#x3D; (Queue*)malloc(sizeof(Queue));<br>q-&gt;data &#x3D; (ElemType*)malloc(sizeof(ElemType));<br>q-&gt;front &#x3D; 0;<br>q-&gt;rear &#x3D; 0;<br>return q;<br>}</p><p>&#x2F;&#x2F;出队<br>ElemType outQueue(Queue* q) {<br>if (q-&gt;front &#x3D;&#x3D; q-&gt;rear) {<br>printf(“空的”);<br>return 0;<br>}<br>ElemType e &#x3D; q-&gt;data[q-&gt;front];<br>q-&gt;front++;<br>return e;<br>}</p><p>&#x2F;&#x2F;判断是否为满<br>int queueFull(Queue* q) {<br>if (q-&gt;front &gt; 0) {<br>int step &#x3D; q-&gt;front;<br>for (int i &#x3D; q-&gt;front; i &lt; q-&gt;rear; i++)<br>{<br>q-&gt;data[i - step] &#x3D; q-&gt;data[i];<br>}<br>q-&gt;front &#x3D; 0;<br>q-&gt;rear &#x3D; q-&gt;rear - step;<br>return 1;<br>}<br><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%85%A5%E9%98%9F.png"><br>else {<br>printf(“真的满了”);<br>return 0;<br>}<br>}</p><p>&#x2F;&#x2F;入队<br>int inQueue(Queue* q, ElemType e) {<br>if (q-&gt;rear &gt;&#x3D; max) {<br>if (!(queueFull))&#x2F;&#x2F;这时候判断是否真的满了<br>{<br>return 0;<br>}<br>}<br>q-&gt;data[q-&gt;rear] &#x3D; e;<br>q-&gt;rear++;<br>return 1;<br>}</p><p>&#x2F;&#x2F;循环队列-入队<br>int cycleIn(Queue* q, ElemType e) {<br>if ((q-&gt;rear + 1) % max &#x3D;&#x3D; q-&gt;front) {<br>printf(“满了”);<br>return 0;<br>}<br>q-&gt;rear &#x3D; (q-&gt;rear + 1) % max;<br>return 1;<br>}</p><p>int main() {<br>Queue* q &#x3D; initQueue();<br>inQueue(q, 10);<br>inQueue(q, 20);<br>inQueue(q, 30);<br>printf(“%d”, outQueue(q));<br>printf(“%d”, outQueue(q));</p><pre><code>return 0;</code></pre><p>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>栈</title>
+      <link href="/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/"/>
+      <url>/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88.png"><br>栈是后进先出，像弹夹一样</p><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define max 100<br>typedef int ElemType;</p><p>typedef struct {<br>ElemType data[max];<br>int top;<br>}Stack;</p><p>&#x2F;&#x2F;初始化<br>void initStack(Stack* s) {<br>s-&gt;top &#x3D; -1;<br>}</p><p>&#x2F;&#x2F;压栈&#x2F;进栈<br>int push(Stack* s, ElemType e) {<br>if (s-&gt;top &gt;&#x3D; max - 1) {<br>printf(“满了\n”);<br>return 0;<br>}<br>s-&gt;top++;<br>s-&gt;data[s-&gt;top] &#x3D; e;<br>return 1;<br>}</p><p>&#x2F;&#x2F;出栈<br>int pop(Stack <em>s, ElemType</em> e){<br>if (s-&gt;top &#x3D;&#x3D; -1) {<br>printf(“空的”);<br>return 0;<br>}<br>*e &#x3D; s-&gt;data[s-&gt;top];<br>s-&gt;top–;<br>return 1;<br>}</p><p>int main() {<br>Stack s;<br>initStack(&amp;s);<br>push(&amp;s, 10);<br>push(&amp;s, 20);<br>push(&amp;s, 30);<br>ElemType e;<br>pop(&amp;s, &amp;e);<br>printf(“%d\n”, e);<br>return 0;<br>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>韩语基础篇</title>
       <link href="/2025/05/06/%E9%9F%A9%E8%AF%AD%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
       <url>/2025/05/06/%E9%9F%A9%E8%AF%AD%E5%9F%BA%E7%A1%80%E7%AF%87/</url>

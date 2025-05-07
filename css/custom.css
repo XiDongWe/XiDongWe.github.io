@@ -396,3 +396,45 @@ div#archive {
 .magnet-item .magnet-item-content {
   background-color: transparent !important; /* 内部背景透明 */
 }
+
+/* 使分类列表分为两列 */
+Archive-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* 替换 .category-item 为实际的类名或选择器 */
+.category-item {
+  background-color: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+  border-radius: 10px; /* 圆角 */
+  padding: 15px; /* 内边距 */
+  margin: 10px; /* 外边距 */
+  transition: all 0.3s ease; /* 平滑过渡效果 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 鼠标悬停时的样式 */
+.category-item:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* 悬停时背景色变深 */
+  transform: translateY(-5px); /* 微上浮效果 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 增强阴影 */
+}
+
+/* 分类名称样式 */
+.category-item span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff; /* 文字颜色 */
+}
+
+/* 添加图标（可选） */
+.category-item::before {
+  content: "•"; /* 使用点作为图标 */
+  margin-right: 8px;
+  font-size: 20px;
+  color: #4fc3f7; /* 图标颜色 */
+}
