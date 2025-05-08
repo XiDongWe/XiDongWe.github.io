@@ -27,7 +27,7 @@
       <link href="/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E9%98%9F%E5%88%97/"/>
       <url>/2025/05/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E9%98%9F%E5%88%97/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E9%98%9F%E5%88%97.png"><br>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#define max 100<br>typedef int ElemType;</p><p>typedef struct QueueNode{<br>ElemType data;<br>struct QueueNode *next;<br>}QueueNode;</p><p>typedef struct{<br>QueueNode* front;<br>QueueNode* rear;<br>}Queue;</p><p>&#x2F;&#x2F;初始化<br>Queue* initQueueNode() {<br>QueueNode* node &#x3D; (QueueNode*)malloc(sizeof(QueueNode));&#x2F;&#x2F;node是头结点<br>Queue* q &#x3D; (Queue*)malloc(sizeof(Queue));<br>node-&gt;data &#x3D; 0;<br>node-&gt;next &#x3D; NULL;<br>q-&gt;front &#x3D; node;<br>q-&gt;rear &#x3D; node;<br>return q;<br>}</p><p>&#x2F;&#x2F;判断是否为空<br>int isEmpty(Queue* q) {<br>if (q-&gt;front &#x3D;&#x3D; q-&gt;rear) {<br>return 1;<br>}<br>else {<br>return 0;<br>}<br>}</p><p>&#x2F;&#x2F;入队<br>void inQueue(Queue *q, ElemType e) {<br>QueueNode <em>node &#x3D; (QueueNode</em>)malloc(sizeof(QueueNode));<br>node-&gt;data &#x3D; e;<br>node-&gt;next &#x3D; NULL;<br>q-&gt;rear-&gt;next &#x3D; node;&#x2F;&#x2F;把node赋给尾巴的下一个<br>q-&gt;rear &#x3D; node;&#x2F;&#x2F;      之后再让尾巴变成node<br>}</p><p>&#x2F;&#x2F;出队<br>int outQueue(Queue *q, ElemType *e) {<br>if (isEmpty(q)) {<br>printf(“空的”);<br>return 0;<br>}<br>QueueNode *node &#x3D; q-&gt;front-&gt;next;&#x2F;&#x2F;q-&gt;front指向头结点，node就是头结点的下一个节点<br>*e &#x3D; node-&gt;data;<br>q-&gt;front-&gt;next &#x3D; node-&gt;next;<br>if (q-&gt;rear &#x3D;&#x3D; node) {<br>q-&gt;rear &#x3D; q-&gt;front;<br>}<br>free(node);<br>return 1;<br>}</p><p>int main() {<br>Queue* q &#x3D; initQueueNode();<br>inQueue(q, 10);<br>inQueue(q, 20);<br>inQueue(q, 30);<br>ElemType e;<br>outQueue(q, &amp;e);<br>printf(“%d”, e);<br>return 0;<br>}</p>]]></content>
       
       
       <categories>
@@ -81,8 +81,8 @@
     
     <entry>
       <title>韩语基础篇</title>
-      <link href="/2025/05/06/%E9%9F%A9%E8%AF%AD%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
-      <url>/2025/05/06/%E9%9F%A9%E8%AF%AD%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
+      <link href="/2025/05/06/%E9%9F%A9%E8%AF%AD/%E9%9F%A9%E8%AF%AD%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
+      <url>/2025/05/06/%E9%9F%A9%E8%AF%AD/%E9%9F%A9%E8%AF%AD%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
       
         <content type="html"><![CDATA[<p>日常生活<br>单词:</p>]]></content>
       
@@ -175,11 +175,11 @@
     
     
     <entry>
-      <title>JAVA</title>
-      <link href="/2025/05/01/JAVA/"/>
-      <url>/2025/05/01/JAVA/</url>
+      <title>面向对象</title>
+      <link href="/2025/05/01/JAVA/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+      <url>/2025/05/01/JAVA/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>一.对象代表什么,就得封装对应的数据，并提供数据对应的行为<br>比如“画圆”的对象是“圆”本身，因为画圆需要半径等等，并不是人画的<br>再比如“关门”是门自己关的，人不过是给了个作用力</p><p>二.private<br><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/JAVA%5Cprivate.png"><br>(忘了的时候看一眼吧)<br>直接用javabean插件就可以了嘻嘻<br>当然也可以用快捷键 alt+insert</p><p>三.this<br><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/JAVA/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png"><br>这是成员变量和局部变量</p><p><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/JAVA/%E5%B0%B1%E8%BF%91%E5%8E%9F%E5%88%99.png"><br>此为就近原则，如果不加this，谁离age近值就是谁，加上this，则会调用成员变量</p>]]></content>
       
       
       <categories>
@@ -195,8 +195,8 @@
     
     <entry>
       <title>像素画</title>
-      <link href="/2025/05/01/%E5%83%8F%E7%B4%A0%E7%94%BB/"/>
-      <url>/2025/05/01/%E5%83%8F%E7%B4%A0%E7%94%BB/</url>
+      <link href="/2025/05/01/%E5%83%8F%E7%B4%A0%E7%94%BB/%E5%83%8F%E7%B4%A0%E7%94%BB/"/>
+      <url>/2025/05/01/%E5%83%8F%E7%B4%A0%E7%94%BB/%E5%83%8F%E7%B4%A0%E7%94%BB/</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -213,28 +213,9 @@
     
     
     <entry>
-      <title>HEXO</title>
-      <link href="/2025/05/01/HEXO/"/>
-      <url>/2025/05/01/HEXO/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> HEXO </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>碎碎念</title>
-      <link href="/2025/05/01/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-      <url>/2025/05/01/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</url>
+      <link href="/2025/05/01/%E7%A2%8E%E7%A2%8E%E5%BF%B5/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+      <url>/2025/05/01/%E7%A2%8E%E7%A2%8E%E5%BF%B5/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</url>
       
         <content type="html"><![CDATA[<p>无语啦，累死我了&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;</p>]]></content>
       
