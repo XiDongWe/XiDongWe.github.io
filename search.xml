@@ -27,7 +27,7 @@
       <link href="/2025/05/09/JAVA/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BF%9B%E9%98%B6/"/>
       <url>/2025/05/09/JAVA/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BF%9B%E9%98%B6/</url>
       
-        <content type="html"><![CDATA[<p>1.static<br>在main中调用类名的方法时，其方法的对象可能是多个对象的共同对象<br>比如说创建了s1,s2两个学生对象，他们有共同的老师t，调用方法时老师是同一个<br>但如果不加static，t就需要被定义两次<br><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/JAVA%5Cstatic.png"><br>所以要用static<br><img src="/%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/JAVA%5Cstatic1.png"><br>被static修饰的变量叫做 静态变量</p><p>2.继承extends<br>啥时候用继承？<br>当类与类之间，存在共性的的内容，并满足子类是父类的一种，就可以用继承</p><p>3.多态<br><img src="/%E5%9B%BE%E7%89%87/JAVA/%E5%A4%9A%E6%80%81.png"><br><img src="/%E5%9B%BE%E7%89%87/JAVA/%E5%A4%9A%E6%80%812.png"><br><img src="/%E5%9B%BE%E7%89%87/JAVA/%E5%A4%9A%E6%80%813.png"><br>创建完对象之后用:register(s)  register(t)   register(admin)调用即可</p>]]></content>
+        <content type="html"><![CDATA[<p>1.static<br>在main中调用类名的方法时，其方法的对象可能是多个对象的共同对象<br>比如说创建了s1,s2两个学生对象，他们有共同的老师t，调用方法时老师是同一个<br>但如果不加static，t就需要被定义两次<br><img src="/%E5%9B%BE%E7%89%87/JAVA/static.png"><br>所以要用static<br><img src="/%E5%9B%BE%E7%89%87/JAVA/static1.png"><br>被static修饰的变量叫做 静态变量</p><p>2.继承extends<br>啥时候用继承？<br>当类与类之间，存在共性的的内容，并满足子类是父类的一种，就可以用继承</p><p>3.多态<br><img src="/%E5%9B%BE%E7%89%87/JAVA/%E5%A4%9A%E6%80%81.png"><br><img src="/%E5%9B%BE%E7%89%87/JAVA/%E5%A4%9A%E6%80%812.png"><br><img src="/%E5%9B%BE%E7%89%87/JAVA/%E5%A4%9A%E6%80%813.png"><br>创建完对象之后用:register(s)  register(t)   register(admin)调用即可</p>]]></content>
       
       
       <categories>
