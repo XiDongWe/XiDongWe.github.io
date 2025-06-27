@@ -533,7 +533,11 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
   display: block; /* 点击后显示分类 */
 }
 
-
+/* 翻页按钮居中 */
+#pagination {
+  width: 100%;
+  margin: auto;
+}
 
 
 
