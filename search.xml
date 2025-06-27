@@ -42,6 +42,25 @@
     
     
     <entry>
+      <title>Python初学</title>
+      <link href="/2025/06/17/Python/%E8%87%AA%E5%8F%98%E9%87%8F/"/>
+      <url>/2025/06/17/Python/%E8%87%AA%E5%8F%98%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="自变量"><a href="#自变量" class="headerlink" title="自变量"></a>自变量</h1><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/picture%E8%87%AA%E5%8F%98%E9%87%8F1" alt="image-20250627092001380"></p><h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul><li>单行注释</li></ul><p>以<code>#</code>开头（建议#与注释的内容空一格）</p><ul><li>多行注释</li></ul><p>以<code>&quot;&quot;&quot;</code>开头和结尾</p><h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>print(“”,数字等自变量,“”)</p><p>(<code>不用引号居然</code>)</p><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>print(type(想要知道数据类型的数据))</p><h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/picture%E8%87%AA%E5%8F%98%E9%87%8F2" alt="image-20250627100012737"></p><h1 id="标识符命名规则"><a href="#标识符命名规则" class="headerlink" title="标识符命名规则"></a>标识符命名规则</h1><ul><li>内容限定</li></ul><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/picture%E8%87%AA%E5%8F%98%E9%87%8F3" alt="image-20250627100731539"></p><ul><li>大小写敏感</li><li>不可使用关键字</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>正则表达式</title>
       <link href="/2025/06/16/JAVA/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
       <url>/2025/06/16/JAVA/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
