@@ -541,3 +541,27 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
 
 
 
+.post-layout {
+  display: flex;
+  gap: 20px; /* 设置左右侧栏和主内容之间的间距 */
+}
+
+.post-sidebar {
+  flex: 1; /* 左右侧栏的宽度比例 */
+}
+
+.post-main {
+  flex: 3; /* 主内容区域的宽度比例 */
+}
+
+.post-sidebar.left-sidebar {
+  order: 1; /* 左侧栏的排列顺序 */
+}
+
+.post-main {
+  order: 2; /* 主内容区域的排列顺序 */
+}
+
+.post-sidebar.right-sidebar {
+  order: 3; /* 右侧栏的排列顺序 */
+}
