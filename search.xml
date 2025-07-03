@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>pyecharts入门</title>
+      <link href="/2025/07/03/pyecharts/"/>
+      <url>/2025/07/03/pyecharts/</url>
+      
+        <content type="html"><![CDATA[<h1 id="pyecharts基础入门"><a href="#pyecharts基础入门" class="headerlink" title="pyecharts基础入门"></a>pyecharts基础入门</h1><h2 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h2><p>from pyecharts.charts import Line<br>from pyecharts.options import TitleOpts</p><h2 id="创建一个折线图对象"><a href="#创建一个折线图对象" class="headerlink" title="创建一个折线图对象"></a>创建一个折线图对象</h2><p>line &#x3D; Line()<br>#给折线图添加x轴数据<br>line.add_xaxis([“中国”,”美国”,”英国”])<br>#给折线图添加y轴数据<br>line.add_yaxis(“GDP”,[30,20,10])<br>#通过render方法，将代码变为图像<br>line.render()<br>#通过全局配置项set_global_opts来设置，TitleOpts导包<br>line.set_global_opts(<br>    title_opts&#x3D;TitleOpts(title&#x3D;”GDP展示”)<br>)</p><p>#通过render方法，将代码变为图像<br>line.render()</p><p>具体的设置可以到网站去寻找<a href="https://pyecharts.org/#/">pyecharts</a></p><h2 id="创建一个地图"><a href="#创建一个地图" class="headerlink" title="创建一个地图"></a>创建一个地图</h2><p>from pyecharts.charts import Map</p><h2 id="准备地图对象"><a href="#准备地图对象" class="headerlink" title="准备地图对象"></a>准备地图对象</h2><p>map &#x3D; Map()</p><h2 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h2><p>data &#x3D; [</p><p>​    (“湖南”,1),<br>​    (“吉林省”,3),<br>​    (“湖北省”,4),<br>​    (“广西壮族自治区”,5),<br>​    (“广东省”,6)<br>]</p><h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><p>map.add(“测试地图”,data,”china”)</p><h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><p>map.render()</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>异常 &amp; 模块</title>
       <link href="/2025/07/03/Python/%E5%BC%82%E5%B8%B8%20&amp;%20%E6%A8%A1%E5%9D%97/"/>
       <url>/2025/07/03/Python/%E5%BC%82%E5%B8%B8%20&amp;%20%E6%A8%A1%E5%9D%97/</url>
