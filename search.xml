@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>快捷键</title>
+      <link href="/2025/07/07/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <url>/2025/07/07/%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      
+        <content type="html"><![CDATA[<ol><li>shitf + f6 : 批量改名</li><li>ctrl + D   : 复制本行到下一行</li><li>win + V    : 打开剪切板</li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SQL</title>
       <link href="/2025/07/06/Python/SQL/"/>
       <url>/2025/07/06/Python/SQL/</url>
@@ -281,7 +294,7 @@
       <link href="/2025/05/08/JAVA/String/"/>
       <url>/2025/05/08/JAVA/String/</url>
       
-        <content type="html"><![CDATA[<p>StringBuilder<br>1.创建对象<br>StringBuilder sb &#x3D; new StringBuilder();</p><p>2.添加元素append()<br>sb.append(1);<br>sb.append(dkjfak);</p><p>3.反转reverse()<br>sb.reverse();</p><p>4.获取长度length()<br>int len &#x3D; sb.length();</p><p>5.变回字符串toString()<br>(因为sb是StringBuilder类型的，并不是字符串)<br>String str &#x3D; sb.toString();</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h1><ol><li><p>创建对象<br>StringBuilder sb &#x3D; new StringBuilder();</p></li><li><p>添加元素append()<br>sb.append(1);<br>sb.append(dkjfak);</p></li><li><p>反转reverse()<br>sb.reverse();</p></li><li><p>获取长度length()<br>int len &#x3D; sb.length();</p></li><li><p>变回字符串toString()<br>(因为sb是StringBuilder类型的，并不是字符串)<br>String str &#x3D; sb.toString();</p></li></ol><h1 id="StringJoiner"><a href="#StringJoiner" class="headerlink" title="StringJoiner"></a>StringJoiner</h1><p>可以拼接字符串<br>StringJoiner sj &#x3D; new StringJoiner(中间部分，起始部分，结尾部分);<br>sj.add(对象)</p>]]></content>
       
       
       <categories>
