@@ -4,12 +4,37 @@
   
     
     <entry>
+      <title>Stream流</title>
+      <link href="/2025/07/18/JAVA/Stream%E6%B5%81/"/>
+      <url>/2025/07/18/JAVA/Stream%E6%B5%81/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h1><p>​就像工厂流水线一样，通过对产品的一系列改造，最后得出商品</p><h1 id="1-先获取一条Stream流，并把数据放上去"><a href="#1-先获取一条Stream流，并把数据放上去" class="headerlink" title="1.先获取一条Stream流，并把数据放上去"></a>1.先获取一条Stream流，并把数据放上去</h1><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250715145212013.png" alt="image-20250715145212013"></p><h1 id="2-Stream流中间方法"><a href="#2-Stream流中间方法" class="headerlink" title="2.Stream流中间方法"></a>2.Stream流中间方法</h1><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250715151404682.png" alt="image-20250715151404682"></p><ul><li>filter过滤</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Collections.addAll(list,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>,<span class="string">&quot;e&quot;</span>);</span><br><span class="line">Stream&lt;String&gt; stream1 = list.stream();</span><br><span class="line">stream1.filter(<span class="keyword">new</span> <span class="title class_">Predicate</span>&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> s.equals(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).forEach(s -&gt; System.out.println(s));</span><br></pre></td></tr></table></figure><p>return 如果是true，则返回，false，则不返回</p><p>也可以接上自己想要的条件</p><p><code>建议使用链式方程</code>，代码更简洁</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream1.filter(s -&gt; s.equals(<span class="string">&quot;a&quot;</span>)).forEach(s -&gt; System.out.println(s));</span><br></pre></td></tr></table></figure><ul><li>limit</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream1.limit(<span class="number">2</span>).forEach(s -&gt; System.out.println(s));</span><br></pre></td></tr></table></figure><ul><li>skip</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream1.skip(<span class="number">2</span>).forEach(s -&gt; System.out.println(s));</span><br></pre></td></tr></table></figure><ul><li>distinct</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream1.distinct().forEach(s -&gt; System.out.println(s));</span><br></pre></td></tr></table></figure><ul><li><p>contact</p></li><li><p>map</p></li></ul><h1 id="3-Stream流中的终结方法"><a href="#3-Stream流中的终结方法" class="headerlink" title="3.Stream流中的终结方法"></a>3.Stream流中的终结方法</h1><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250715155911140.png" alt="image-20250715155911140"></p><p>其中collect要用</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.collect(Collectors.类型)</span><br></pre></td></tr></table></figure><p>如果是双列集合map的话</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.collec(Collectors.toMap(键的规则,值的规则))</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>其中键和值的规则的格式为</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.collect(Collectors.toMap(<span class="keyword">new</span> <span class="title class_">Function</span>&lt;流当中数据的类型, 键的类型&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">apply</span><span class="params">(String s)</span> &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="keyword">new</span> <span class="title class_">Function</span>&lt;流当中数据的类型, 值的类型&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Integer <span class="title function_">apply</span><span class="params">(String s)</span> &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;));</span><br></pre></td></tr></table></figure><p>最后华为lambda表达式即可</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.collect(Collectors.toMap(s -&gt; s., s -&gt; s.));</span><br></pre></td></tr></table></figure><p>或者在复习一下<a href="https://www.bilibili.com/video/BV1yW4y1Y7Ms?spm_id_from=333.788.videopod.episodes&vd_source=b0dff9885c076f5f4c78c1f99505a0cf&p=39">收集方法collect超详解</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>快捷键</title>
-      <link href="/2025/07/07/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-      <url>/2025/07/07/%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <link href="/2025/07/07/%E5%BB%BA%E6%A8%A1/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <url>/2025/07/07/%E5%BB%BA%E6%A8%A1/%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
       
-        <content type="html"><![CDATA[<ol><li>shitf + f6 : 批量改名</li><li>ctrl + D   : 复制本行到下一行</li><li>win + V    : 打开剪切板</li></ol>]]></content>
+        <content type="html"><![CDATA[<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><p><code>中键</code>  旋转</p><p><code>shift+中键</code>  平移</p><p><code>shift+a</code>  新建图形</p><p><code>x / delete</code> 删除</p><p><code>g</code>  对着模型按，会跟着鼠标移动</p><p>再按 x, y, z, 会在对应坐标轴上移动</p><p><code>r</code>  旋转</p><p><code>s</code>  缩放</p><p><code>shift+z</code>  透视</p><p><code>h</code>  隐藏</p><p><code>shift+d</code>  复制</p><p><code>/</code> 选中拉进</p><p>小键盘中</p><p><code>1</code> 正视图 <code>3</code> 左视图<code>7</code> 俯视图 <code>9</code> 反向 <code>0</code> 摄像机视角</p><p><code>gz</code> 切换局部坐标(物体自己的xyz，是可变的)，再按xyz，切换全局坐标(整个界面的xyz，是规定的)</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 建模 </category>
+          
+      </categories>
       
       
     </entry>
