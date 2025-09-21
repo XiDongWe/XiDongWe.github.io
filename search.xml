@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>网络编程</title>
+      <link href="/2025/09/21/JAVA/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+      <url>/2025/09/21/JAVA/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921125338905.png" alt="image-20250921125338905"></p><h1 id="网路编程三要素"><a href="#网路编程三要素" class="headerlink" title="网路编程三要素"></a>网路编程三要素</h1><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921125718348.png" alt="image-20250921125718348"></p><h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921130246415.png" alt="image-20250921130246415"></p><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921131939036.png" alt="image-20250921131939036"></p><h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921132102242.png" alt="image-20250921132102242"></p><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921132555263.png" alt="image-20250921132555263"></p><p><code>UDP发送数据</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建DatagramSocket对象</span></span><br><span class="line"><span class="comment">//空参：所有可用端口中随机一个进行使用</span></span><br><span class="line"><span class="comment">//有参：指定端口号进行绑定</span></span><br><span class="line"><span class="type">DatagramSocket</span> <span class="variable">ds</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatagramSocket</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//打包数据</span></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;泥嚎&quot;</span>;</span><br><span class="line"><span class="type">byte</span>[] bytes = str.getBytes();</span><br><span class="line"></span><br><span class="line"><span class="type">InetAddress</span> <span class="variable">byName</span> <span class="operator">=</span> InetAddress.getByName(<span class="string">&quot;127.0.0.1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="variable">port</span> <span class="operator">=</span> <span class="number">10086</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">DatagramPacket</span> <span class="variable">dp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatagramPacket</span>(bytes,bytes.length,byName,port);</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送数据</span></span><br><span class="line">ds.send(dp);</span><br><span class="line"></span><br><span class="line"><span class="comment">//释放资源</span></span><br><span class="line">ds.close();</span><br></pre></td></tr></table></figure><p><code>UDP接收数据</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建DatagramSocket对象</span></span><br><span class="line"><span class="comment">//在接收的时候，一定要绑定端口</span></span><br><span class="line"><span class="comment">//而且绑定的端口一定要与发送的端口保持一致</span></span><br><span class="line"><span class="type">DatagramSocket</span> <span class="variable">ds</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatagramSocket</span>(<span class="number">10086</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收数据包</span></span><br><span class="line"><span class="comment">//创建一个数组来接收数据</span></span><br><span class="line"><span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="type">DatagramPacket</span> <span class="variable">dp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatagramPacket</span>(bytes, bytes.length);</span><br><span class="line"></span><br><span class="line"><span class="comment">//解析数据包</span></span><br><span class="line"><span class="type">byte</span>[] data = dp.getData();</span><br><span class="line"><span class="type">InetAddress</span> <span class="variable">address</span> <span class="operator">=</span> dp.getAddress();</span><br><span class="line"><span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> dp.getLength();</span><br><span class="line"><span class="type">int</span> <span class="variable">port</span> <span class="operator">=</span> dp.getPort();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//释放资源</span></span><br><span class="line">ds.close();</span><br></pre></td></tr></table></figure><p><code>UDP三种通信方式</code></p><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921152928921.png" alt="image-20250921152928921"></p><p><code>TCP</code></p><p><img src="https://raw.githubusercontent.com/XiDongWe/Picture/main/pictureimage-20250921153400641.png" alt="image-20250921153400641"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVASE </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多线程</title>
       <link href="/2025/09/19/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
       <url>/2025/09/19/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
@@ -13,7 +32,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -32,7 +51,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -51,7 +70,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -89,7 +108,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -108,7 +127,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -293,7 +312,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -362,7 +381,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -400,7 +419,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -419,7 +438,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
@@ -609,7 +628,7 @@
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JAVASE </category>
           
       </categories>
       
